@@ -705,10 +705,10 @@ class Unicorn::HttpServer
   end
 
   def prep_readers(readers)
-    wtr = Unicorn::Waiter.prep_readers(readers)
-    @timeout *= 500 # to milliseconds for epoll, but halved
-    wtr
-  rescue
+  #   wtr = Unicorn::Waiter.prep_readers(readers)
+  #   @timeout *= 500 # to milliseconds for epoll, but halved
+  #   wtr
+  # rescue
     require_relative 'select_waiter'
     @timeout /= 2.0 # halved for IO.select
     Unicorn::SelectWaiter.new
